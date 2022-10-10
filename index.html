@@ -25,20 +25,36 @@
                 <script>
                     document.title = "JavaScript Basic -- In class practice -- Yilian Zhang";
                     // use document.write to display a message
-                    
-                    // use console.log to display a message   
-                    
+                    document.writeln("<h2> Displayed Header Msg </h2>");
+                    // use console.log to display a message
+                    console.log("Logged message to the console")   ;
                     
                 </script>
             </p>
             <p> Please import external file hello.js here. 
-                
+                <script src="js/hello.js"></script>
             </p>
         </div>
 
         <div class="practice">
             <h1> Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
+            <script>
+                var num1 = 3;
+                var num2 = 5;
+                var num4 = "123";
+                var result1 = num1 * num2;
+                var result2 = num1 - num2;
+                var result3 = num1 + num2;
+                var result4 = num1 / num2;
+
+                //var result5 = num1+ num2 + num4; Java WILL concatenate this, but PLEASE DONT DO THIS
+
+                document.write("|result1 is " + result1 + "| ");
+                document.write("|result2 is " + result2 + "| ");
+                document.write("|result3 is " + result3 + "| ");
+                document.write("|result4 is " + result4 + "| ");
+            </script>
 
 
         </div>
@@ -46,16 +62,41 @@
         <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
             <p> Write an image to the page </p>
-
+            
+            <script>
+                document.write("<img src=\"img/die1.png\" alt=\"dies\">")
+                document.write("<img src=\"img/die2.png\" alt=\"dies\">")
+                document.write("<img src=\"img/die3.png\" alt=\"dies\">")
+                document.write("<img src=\"img/die4.png\" alt=\"dies\">")
+                document.write("<img src=\"img/die5.png\" alt=\"dies\">")
+                document.write("<img src=\"img/die6.png\" alt=\"dies\">")
+                imglist = "";
+                for(var i=1; i<7; i++){
+                    imglist = imglist + "<img src=\"img/die" +i+".png\">";
+                }
+                document.write(imglist);
+            </script>
             <p> Write a table to the page </p>
+            <script>
+                var tablecode="<table>";
+                for(var i=1; i<6; i++){
+                    tablecode=tablecode + "<tr><td>" +i+ "</td> </tr>";
+                }
+                tablecode = tablecode + "</table>";
+                document.write(tablecode);
+            </script>
 
         </div>
 
+        <!-- October 10 -->
+        
         <div class="practice">
             <h1>Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-
+                document.write(window.location.href);
+                document.write(document.lastModified);
+                //window.location.href="https://www.usca.edu/"
             </script>
 
         </div>
@@ -71,9 +112,49 @@
 
         <div class="practice">
             <h1> Get innerHTML of an elemnt</h1>
-            <p id="p1"> Paragraph Number One </p>
-            <p id="p2"> Paragraph Number two </p>
-            <p id="p3"> Paragraph Number three </p>
+            <p id="p1" onclick="change1('p1');" onmouseleave="change2('p1');"> Paragraph Number One </p>
+            <p id="p2" onclick="change1('p2');" onmouseleave="change2('p2');"> Paragraph Number two </p>
+            <p id="p3" onclick="change1('p3');" onmouseleave="change2('p3');"> Paragraph Number three </p>
+            <script>
+                //Event Handler
+                function change1(inputElement){
+
+                    switch(inputElement){
+
+                        case 'p1':
+                            document.getElementById('p1').textContent="Changed";
+                            break;
+                        case 'p2':
+                            document.getElementById('p2').textContent="Changed";
+                            break;
+                        case 'p3':
+                            document.getElementById('p3').textContent="Changed";
+                            break;
+
+                    }
+
+                }
+
+                function change2(inputElement){
+
+                    switch(inputElement){
+
+                        case 'p1':
+                            document.getElementById('p1').textContent="Left";
+                            break;
+                        case 'p2':
+                            document.getElementById('p2').textContent="Left";
+                            break;
+                        case 'p3':
+                            document.getElementById('p3').textContent="Left";
+                            break;
+
+                    }
+
+                }
+
+            </script>
+            
             <p>Please write JavaScript code to change the content of each paragraph.​
             <p>
 
@@ -85,16 +166,24 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
+                    var num1 = parseInt(document.getElementsByName('num1')[0].value);
+                    var num2 = parseInt(document.getElementsByName('num2')[0].value);
 
+                    var ans = num1 + num2;
+
+                    document.getElementById('result').textContent="The answer is: "+ans;
 
                 }
             </script>
-            <p> <input type="text" name="num1" /> + <input type="text" name="num2">
+            <p> 
+                <input type="text" name="num1" /> + <input type="text" name="num2">
                 <input type="button" value="=" onclick="calculate();">
                 <label id="result"> ? </label>
             </p>
 
         </div>
+
+        <!-- End Of October 10 -->
 
         <div class="practice">
             <h1>JavaScript Events - blur -addEventListener </h1>
