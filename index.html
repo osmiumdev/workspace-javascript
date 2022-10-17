@@ -183,8 +183,6 @@
 
         </div>
 
-        <!-- End Of October 10 -->
-
         <div class="practice">
             <h1>JavaScript Events - blur -addEventListener </h1>
             <form>
@@ -204,14 +202,43 @@
                     </label>
                 </p>
             </form>
+            <script>
+
+                function welcome_message(){
+                    var name = document.getElementById('cName').value;
+                    document.getElementById('message').innerHTML="Welcome <b>"+name+"</b>";
+
+                }
+
+                var fE = document.getElementById('cName');
+                fE.addEventListener('blur', welcome_message, false);
+            
+            </script>
 
         </div>
+
+        <!-- End Of October 10 -->
 
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <label id="sqr_result"> ? </label>
+
+            <script>
+                function calc_sqr(){
+                    var number = document.getElementById('num').value;
+                    
+
+                    var number = parseFloat(document.getElementById('num').value);
+                    var square = number*number;
+
+                    document.getElementById('sqr_result').innerHTML="<b>"+square+"</b>";
+                }
+
+                var sqr = document.getElementById('num');
+                sqr.addEventListener('blur', calc_sqr, false);
+            </script>
 
         </div>
 
@@ -225,11 +252,26 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="message2"> 
             </div>
+            <script>
+                //event handler
+                function toHTML(){
+                    var codes = document.getElementById('code').value;
+                    document.getElementById('message2').innerHTML = codes;
+
+                }
+
+                //event
+                var bE = document.getElementById('tryit');
+                bE.addEventListener('click', toHTML, false)
+
+            </script>
 
 
         </div>
+
+        <!-- End Of October 12 -->
 
         <div class="practice">
             <h1>Decision statement - If </h1>
@@ -251,7 +293,57 @@
 
             <script type="text/javascript">
 
+                function getPrice(){
+                    var yearCar = document.getElementById('year').value;
+                    var condCar = document.getElementById('condition').value;
+                    var price = 0;
+                    if (yearCar == "2003"){
 
+                        if(condCar == "Fair"){
+
+                            price = 4500;
+
+                        } else if (condCar == "Good"){
+
+                            price = 5000;
+
+                        } else {
+
+                            price = Unknown;
+
+                        }
+
+                    } else if (yearCar == "2004"){
+
+                        if(condCar == "Fair"){
+
+                            price = 4700;
+
+                        } else if (condCar == "Good"){
+
+                            price = 5500;
+
+                        } else {
+
+                            price = Unknown;
+
+                        }
+                    
+                    } else {
+
+                        price = Unknown;
+
+                    }
+
+                    document.getElementById('price').textContent = price.toString();
+
+                }
+
+                var d1 = document.getElementById('year'); 
+                d1.addEventListener('change', getPrice, false);
+
+                var d2 = document.getElementById('condition'); 
+                d2.addEventListener('change', getPrice, false);
 
             </script>
 
@@ -262,6 +354,45 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+
+            <script>
+
+                function changeTheme(){
+
+                    let theme = document.querySelector('#theme').value;
+                    let dcolor = "white";
+
+                    switch(theme){
+
+                        case "warm":
+                            dcolor = "orange";
+                            break;
+                        case "hot":
+                            dcolor = "red";
+                            break;
+                        case "cool":
+                            dcolor = "cyan";
+                            break;
+                        case "cold":
+                            dcolor = "aqua";
+                            break;
+                        case "neutral":
+                            dcolor = "gray";
+                            break;
+                    }
+
+                    console.log(theme);
+                    console.log(dcolor);
+
+                    document.body.style.backgroundColor = dcolor;
+                    document.body.setAttribute('style', "background-color:" + dcolor);
+
+                }
+
+                document.querySelector('#theme').addEventListener('blur', changeTheme, false);
+
+
+            </script>
 
         </div>
 
@@ -291,6 +422,19 @@
             <p id="result">
 
             </p>
+
+            <script>
+
+                function getPremium() {
+
+                    var coverage = document.querySelector('input[name="coverage"]:checked');
+                    var age = document.querySelector('input[')
+
+                }
+
+                document.querySelector('input[value="Check Premium"]').addEventListener("click", getPremium, false);
+
+            </script>
 
         </div>
 
