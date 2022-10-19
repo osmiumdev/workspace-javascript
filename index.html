@@ -396,7 +396,7 @@
 
         </div>
 
-
+        <!-- End of October 17 -->
 
         <div class="practice">
             <h1> Switch practice -- Insurance Application</h1>
@@ -419,16 +419,46 @@
             <p>
                 <input type="button" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="resultPrem">
 
             </p>
 
             <script>
 
+                function ageFactor(ageIndex){
+
+                    switch(ageIndex){
+
+                    case 0:
+                        
+                        return .08;
+
+                    case 1:
+
+                        return .09;
+
+                    case 2:
+
+                        return .11;
+
+                    case 3:
+
+                        return .17;
+
+                    }
+
+                }
+
                 function getPremium() {
 
-                    var coverage = document.querySelector('input[name="coverage"]:checked');
-                    var age = document.querySelector('input[')
+                    var coverage = parseFloat(document.querySelector('input[name="coverage"]:checked').value) / 1000;
+                    var age = document.getElementById('agegroup').selectedIndex;
+                
+                    var prem = (ageFactor(age) * coverage) + 10;
+
+                    this.animate([{transform: 'scale(0.2)'}, {transform: 'scale(' + (prem / 32).toString() + ')'}], {duration: 1500, fill: "forwards"});
+
+                    document.getElementById('resultPrem').textContent = prem.toString();
 
                 }
 
@@ -448,9 +478,34 @@
             <p>
                 <input type="button" value="Click for Square">
             </p>
+            <p id="squareResult"></p>
+
+            <script>
+
+                function forSquare(){
+
+                    var resultTextContent = document.getElementById('squareResult').textContent;
+                    resultTextContent = "";
+
+                    for(var i=0; i < document.getElementById('inputnumber1').value; i++){
+
+                        resultTextContent = document.getElementById('squareResult').innerHTML;
+
+                        document.getElementById('squareResult').innerHTML = resultTextContent + Math.pow(i + 1, 2).toString() + "<br>";
+
+                    }
+
+
+
+                }
+
+                document.querySelector('input[value="Click for Square"]').addEventListener("click", forSquare, false)
+
+            </script>
 
         </div>
 
+        <!-- End of October 19 -->
 
         <div class="practice">
             <h1>For Loop Practice 2 </h1>
