@@ -510,16 +510,74 @@
         <div class="practice">
             <h1>For Loop Practice 2 </h1>
             <!--  Input number box -->
-            <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
+            <p> N = <input type="number" min="1" max="100" id="inputnumber2"> </p>
             <p>
-                <input type="button" value="Click for multiplication table">
+                <input type="button" value="Click for multiplication table" id="outputTableButton">
             </p>
 
             <!-- output section -->
-            <div id="output">
+            <div id="outputTable">
 
 
             </div>
+
+            <script>
+
+                function generateTable(){ //Does not work
+
+                    var num = parseInt(document.getElementById('inputnumber2').value);
+                    var output = document.getElementById('outputTable');
+
+                    output.innerHTML = "<table>\n"; //begin table
+
+                    for(i = 1; i <= (num + 1); i++){
+
+                        output.innerHTML += " <tr>\n";
+
+                        for(j = 1; j < (num + 1); j++){
+
+                            output.innerHTML += "  <td>" + (i * j).toString() + "</td>\n";
+
+                        }
+
+                        output.innerHTML += " </tr>\n";
+
+                    }
+
+                    output.innerHTML += "</table>\n";
+
+                }
+
+                function generateTable2(){
+
+                    var num = parseInt(document.getElementById('inputnumber2').value);
+                    var output = document.getElementById('outputTable');
+
+                    var tableCode = "<table>\n"; //begin table
+
+                    for(var i = 1; i <= num; i++){
+
+                        tableCode += " <tr>\n";
+
+                        for(var j = 1; j <= i; j++){
+
+                            tableCode += "  <td>" + (i * j).toString() + "</td>\n";
+
+                        }
+
+                        tableCode += " </tr>\n";
+
+                    }
+
+                    tableCode += "</table>\n";
+                    
+                    output.innerHTML = tableCode;
+
+                }
+
+                document.getElementById('outputTableButton').addEventListener('click', generateTable2, false);
+
+            </script>
 
         </div>
 
@@ -545,7 +603,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img id="die" src="img/die1.png"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -567,7 +625,30 @@
                 </tr>
             </table>
 
+            <script>
+
+                function getRandomInt() {
+
+                    min = Math.ceil(0);
+                    max = Math.floor(5);
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+
+                }
+
+                function statisticsTest(){
+
+                    var randInt = getRandomInt();
+                    var die = document.getElementById('die');
+
+                     
+
+                }
+
+            </script>
+
         </div>
+
+        <!-- End of October 24 Practice (Finish above)--> 
 
 
         <div class="practice">
@@ -587,7 +668,10 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
+
 			<script>
+
+
 				
 			</script>
 
