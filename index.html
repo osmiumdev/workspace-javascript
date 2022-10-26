@@ -616,39 +616,33 @@
                 </tr>
                 <tr>
                     <th>Statistics</th>
-                    <td id="r1"></td>
-                    <td id="r2"></td>
-                    <td id="r3"></td>
-                    <td id="r4"></td>
-                    <td id="r5"></td>
-                    <td id="r6"></td>
+                    <td id="r1">0</td>
+                    <td id="r2">0</td>
+                    <td id="r3">0</td>
+                    <td id="r4">0</td>
+                    <td id="r5">0</td>
+                    <td id="r6">0</td>
                 </tr>
             </table>
 
             <script>
 
-                function getRandomInt() {
-
-                    min = Math.ceil(0);
-                    max = Math.floor(5);
-                    return Math.floor(Math.random() * (max - min + 1)) + min;
-
+                function changeimage() {
+                    var stats=[0,0,0,0,0,0]
+                    
+                    var num = Math.floor(Math.random()*6+1);
+                    stats[num-1] += 1;
+                    document.getElementById('die').setAttribute('src', "img/die"+num+".png");
+                    document.getElementById("r" + num).textContent = parseInt(document.getElementById("r" + num).textContent) + stats[num-1];
                 }
 
-                function statisticsTest(){
-
-                    var randInt = getRandomInt();
-                    var die = document.getElementById('die');
-
-                     
-
-                }
+                document.getElementById('roll').addEventListener('click',changeimage,false);
 
             </script>
 
         </div>
 
-        <!-- End of October 24 Practice (Finish above)--> 
+        <!-- End of October 24 Practice --> 
 
 
         <div class="practice">
@@ -671,7 +665,27 @@
 
 			<script>
 
+                    var banners = document.querySelectorAll(".img-container-hide");
+                    var iterator = 0;
 
+                function cycleBanner(){
+
+                    banners[iterator].setAttribute("class", "img-container");
+                    if(iterator != 0){
+
+                        banners[iterator - 1].setAttribute("class", "img-container-hide"); 
+                    
+                    } else {
+
+                        banners[banners.length - 1].setAttribute("class", "img-container-hide");
+
+                    }
+                    iterator++;
+                    if(iterator > banners.length - 1){ iterator = 0; }
+
+                }
+
+                setInterval(cycleBanner, 5000);
 				
 			</script>
 
@@ -691,7 +705,7 @@
                         Check in: <input type="date" id="checkin"> Check out: <input type="date" id="checkout">
                     </p>
                     <p>
-                        Number of guest: <input type="number" id="num" min="0" max="5">
+                        Number of guest: <input type="number" id="guestCount" min="0" max="5">
                     </p>
                     <p>
                         Room Type: <select id="room">
@@ -702,12 +716,14 @@
                         </select>
                     </p>
                     <p>
-                        <input id="submit" type="button" value="submit">
+                        <input id="rsvp" type="button" value="submit">
                     </p>
                     <p>
                         <input id="lists" type="button" value="List current reservations">
                     </p>
                 </form>
+                <p id="msg"></p>
+                <p id="reservations"></p>
                 <script src="js/hotel.js"></script>
             </div>
 
