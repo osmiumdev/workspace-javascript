@@ -3,11 +3,63 @@
 <head>
     <meta charset="UTF-8">
 
+    <link rel="stylesheet" type="text/css" href="css/main-old.css">
+    <!-- old css
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    -->
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('body').hide().fadeIn(3000);
+
+            /*
+
+            $('h1').click(function(){
+
+                console.log("yo");
+
+            });
+
+            $('img').mouseover(function(){
+
+                $(this).slideDown();
+
+            });
+
+            */
+
+            $('p').hide();
+            $('h1').click(function(){
+
+                $(this).parent().children('p').slideToggle(500);
+
+            });
+
+            $('input').each(function(){
+
+                var theID = $(this).attr("id");
+                console.log(theID);
+
+            })
+
+            var count = 0;
+            $('img').each(function(){
+
+                console.log($(this).attr("src"));
+                count++;
+
+            })
+            console.log(count);
+
+        });
+
+    </script>
 
 </head>
 
@@ -741,8 +793,14 @@
 
 
     </div>
+
+    <!--
+
     <script src="script.js"> </script>
     <script src="js/practice.js"></script>
+
+    -->
+
 
 
 </body>
